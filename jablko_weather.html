@@ -1,5 +1,5 @@
 <script>
-	const jablko_weather = {
+	const $MODULE_NAME = {
 		update_weather: async function() {
 			const raw_response = await fetch("/jablko_modules/$MODULE_NAME/get_all_weather", {
 				method: "POST"
@@ -17,8 +17,8 @@
 			const hot_color = [232, 65, 24];
 			const cold_color = [0, 151, 230];
 
-			const temp_color = jablko_weather.interpolate_color(hot_color, cold_color, 30, 0, temp_in_c);
-			const feels_color = jablko_weather.interpolate_color(hot_color, cold_color, 30, 0, feels_in_c);
+			const temp_color = $MODULE_NAME.interpolate_color(hot_color, cold_color, 30, 0, temp_in_c);
+			const feels_color = $MODULE_NAME.interpolate_color(hot_color, cold_color, 30, 0, feels_in_c);
 
 			const temp_value = document.getElementById("weather_temp");
 			const feels_like_value = document.getElementById("weather_feels_like");
@@ -34,7 +34,7 @@
 
 			const high_humidity_color = [0, 151, 230];
 			const low_humidity_color = [251, 197, 49];
-			const humidity_color = jablko_weather.interpolate_color(high_humidity_color, low_humidity_color, 100, 0, json_response.current.humidity);
+			const humidity_color = $MODULE_NAME.interpolate_color(high_humidity_color, low_humidity_color, 100, 0, json_response.current.humidity);
 			humidity_value.textContent = json_response.current.humidity + "%";
 			humidity_value.style.color = "rgb(" + humidity_color[0] + "," + humidity_color[1] + "," + humidity_color[2] + ")";
 
@@ -42,7 +42,7 @@
 
 			const high_wind_color = [68, 189, 50];
 			const low_wind_color = [0, 168, 255];
-			const wind_color = jablko_weather.interpolate_color(high_wind_color, low_wind_color, 4, 0, json_response.current.wind_speed);
+			const wind_color = $MODULE_NAME.interpolate_color(high_wind_color, low_wind_color, 4, 0, json_response.current.wind_speed);
 			wind_value.textContent = json_response.current.wind_speed + " m/s from " + json_response.current.wind_deg + "° N";
 			wind_value.style.color = "rgb(" + wind_color[0] + "," + wind_color[1] + "," + wind_color[2] + ")";
 
@@ -55,8 +55,8 @@
 					hourly_table.deleteRow(i - 1);
 				}
 				const row = hourly_table.insertRow(i - 1);
-				const hourly_temp = jablko_weather.kelvin_to_temp(json_response.hourly[i].temp);
-				const hourly_feels = jablko_weather.kelvin_to_temp(json_response.hourly[i].feels_like);
+				const hourly_temp = $MODULE_NAME.kelvin_to_temp(json_response.hourly[i].temp);
+				const hourly_feels = $MODULE_NAME.kelvin_to_temp(json_response.hourly[i].feels_like);
 
 				row.insertCell(0).innerHTML = "<p>" + x.getHours() + ":00</p>";
 				row.insertCell(1).innerHTML = "<p>" + hourly_temp.f.toFixed(0) + " °F<br>" + hourly_temp.c.toFixed(0) + " °C</p>";
@@ -88,9 +88,9 @@
 		}
 	}
 
-	document.addEventListener("DOMContentLoaded", jablko_weather.update_weather);
+	document.addEventListener("DOMContentLoaded", $MODULE_NAME.update_weather);
 
-	setInterval(jablko_weather.update_weather, 10 * 60000);
+	setInterval($MODULE_NAME.update_weather, 10 * 60000);
 </script>
 <style>
 td > p {
@@ -106,7 +106,7 @@ th {
 	margin-bottom: 2px;
 }
 </style>
-<div id="jablko_weather" class="module_card">
+<div id="$MODULE_NAME" class="module_card">
 	<div class="module_header">
 		<h1>Weather</h1>
 		<svg class="module_icon" viewBox="0 0 150 150">
