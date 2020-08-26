@@ -11,7 +11,6 @@ const weather = require("../../jablko_interface.js").weather;
 
 const module_name = path.basename(__dirname);
 
-
 module.exports.permission_level = 0;
 
 module.exports.generate_card = async () => {
