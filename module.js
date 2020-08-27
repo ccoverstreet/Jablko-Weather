@@ -7,9 +7,8 @@
 const fs = require("fs").promises;
 const path = require("path");
 
-const weather = require("../../jablko_interface.js").weather;
-
 const module_name = path.basename(__dirname);
+const weather = require(module.parent.filename).weather;
 
 module.exports.permission_level = 0;
 
