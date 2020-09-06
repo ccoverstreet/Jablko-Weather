@@ -64,7 +64,7 @@
 				row.insertCell(3).innerHTML = "<p>" + json_response.hourly[i].weather[0].description + "</p>";
 			}
 		},
-		interpolate_color: async function(high_color, low_color, high_value, low_value, value) {
+		interpolate_color: function(high_color, low_color, high_value, low_value, value) {
 			var interp = [0, 0, 0];
 
 			if (value < low_value) {
