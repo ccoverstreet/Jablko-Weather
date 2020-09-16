@@ -13,7 +13,8 @@ const weather = require(module.parent.filename).weather;
 module.exports.permission_level = 0;
 
 module.exports.generate_card = async () => {
-	return (await fs.readFile(`${__dirname}/jablko_weather.html`, "utf8")).replace(/\$MODULE_NAME/g, module_name);
+	return (await fs.readFile(`${__dirname}/jablko_weather.html`, "utf8"))
+		.replace(/\$MODULE_NAME/g, module_name);
 }
 
 module.exports.get_current_weather = async (req, res) => {
