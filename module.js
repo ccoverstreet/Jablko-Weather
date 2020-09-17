@@ -57,7 +57,8 @@ module.exports.chatbot_current_weather = async (req, res) => {
 Temp: ${((9 / 5 * temp_in_c) + 32).toFixed(1).toString() + " °F (" + temp_in_c.toFixed(1) + " °C)"}
 Feels: ${((9 / 5 * feels_in_c) + 32).toFixed(1).toString() + " °F (" + feels_in_c.toFixed(1) + " °C)"}
 Humidity: ${weather_data.current.humidity}%,
-Desc: ${weather_data.current.weather[0].description}`;
+Desc: ${weather_data.current.weather[0].description}
+`;
 
 	return message;
 }
